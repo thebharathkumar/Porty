@@ -3,6 +3,7 @@ import './globals.css'
 import { RoleProvider } from '@/contexts/RoleContext'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { Toaster } from 'react-hot-toast'
+import TronScanner from '@/components/TronScanner'
 
 export const metadata: Metadata = {
   title: 'Bharath Kumar Rajesh | Portfolio',
@@ -58,26 +59,28 @@ export default function RootLayout({
       <body className="custom-scrollbar font-sans">
         <ThemeProvider>
           <RoleProvider>
+            <TronScanner />
             {children}
             <Toaster
               position="bottom-right"
               toastOptions={{
                 duration: 3000,
                 style: {
-                  background: '#1C1C1E',
+                  background: '#000000',
                   color: '#fff',
-                  border: '1px solid rgba(255, 0, 0, 0.3)',
+                  border: '1px solid rgba(0, 217, 255, 0.5)',
+                  boxShadow: '0 0 20px rgba(0, 217, 255, 0.3)',
                 },
                 success: {
                   iconTheme: {
-                    primary: '#34C759',
-                    secondary: '#fff',
+                    primary: '#00D9FF',
+                    secondary: '#000',
                   },
                 },
                 error: {
                   iconTheme: {
-                    primary: '#FF0000',
-                    secondary: '#fff',
+                    primary: '#FF6600',
+                    secondary: '#000',
                   },
                 },
               }}
