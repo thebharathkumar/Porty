@@ -24,6 +24,8 @@ export default function Home() {
   useEffect(() => {
     if (selectedRole) {
       setShowContent(true)
+    } else {
+      setShowContent(false)
     }
   }, [selectedRole])
 

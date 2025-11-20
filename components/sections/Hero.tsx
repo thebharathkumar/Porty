@@ -1,222 +1,160 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useRole } from '@/contexts/RoleContext'
 import { ChevronDown } from 'lucide-react'
 
 export default function Hero() {
   const { roleConfig } = useRole()
-  const [displayText, setDisplayText] = useState('')
-  const [showCursor, setShowCursor] = useState(true)
-
-  const metrics = [
-    { value: 60, label: 'Efficiency Boost', suffix: '%' },
-    { value: 50, label: 'Records Processed', suffix: 'K+' },
-    { value: 93, label: 'ML Accuracy', suffix: '%' },
-  ]
-
-  useEffect(() => {
-    if (!roleConfig) return
-
-    const text = roleConfig.tagline
-    let currentIndex = 0
-
-    const typingInterval = setInterval(() => {
-      if (currentIndex <= text.length) {
-        setDisplayText(text.slice(0, currentIndex))
-        currentIndex++
-      } else {
-        clearInterval(typingInterval)
-      }
-    }, 50)
-
-    const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev)
-    }, 500)
-
-    return () => {
-      clearInterval(typingInterval)
-      clearInterval(cursorInterval)
-    }
-  }, [roleConfig])
 
   if (!roleConfig) return null
 
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-black via-nothing-surface to-black px-6 py-20"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-6 py-32"
     >
-      {/* Background grid */}
-      <div className="grid-pattern absolute inset-0 opacity-10" />
+      {/* Nothing-style background */}
+      <div className="dot-matrix absolute inset-0 opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
 
-      {/* Animated gradient blob */}
+      {/* Geometric shapes */}
       <motion.div
-        className="absolute -top-40 right-0 h-96 w-96 rounded-full opacity-20 blur-3xl"
-        style={{ backgroundColor: roleConfig.accentColor }}
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.3, 0.2],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
+        className="absolute right-0 top-0 h-[500px] w-[500px] opacity-5"
+        style={{ border: `2px solid ${roleConfig.accentColor}` }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 h-[300px] w-[300px] rounded-full opacity-10"
+        style={{ border: `3px solid ${roleConfig.accentColor}` }}
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      <div className="relative z-10 mx-auto max-w-6xl text-center">
-        {/* Hello intro */}
+      <div className="relative z-10 mx-auto max-w-7xl text-center">
+        {/* Nothing-style badge */}
         <motion.div
-          className="mb-6 font-mono text-nothing-text-secondary"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          className="mb-12 inline-block"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
         >
-          <span className="text-nothing-red">$</span> hello_world
+          <div
+            className="rounded-full px-6 py-2 text-xs font-bold uppercase tracking-widest"
+            style={{
+              border: `2px solid ${roleConfig.accentColor}`,
+              color: roleConfig.accentColor
+            }}
+          >
+            {roleConfig.title}
+          </div>
         </motion.div>
 
-        {/* Main heading */}
+        {/* Main heading - Nothing style: BOLD and HIGH CONTRAST */}
         <motion.h1
-          className="mb-4 text-5xl font-bold text-white md:text-7xl lg:text-8xl"
-          initial={{ opacity: 0, y: 20 }}
+          className="mb-8 text-6xl font-black uppercase leading-[0.9] tracking-tight text-white md:text-8xl lg:text-9xl"
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Bharath Kumar Rajesh
+          <motion.span
+            className="block"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            BHARATH
+          </motion.span>
+          <motion.span
+            className="block"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            KUMAR
+          </motion.span>
+          <motion.span
+            className="block"
+            style={{ color: roleConfig.accentColor }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            RAJESH
+          </motion.span>
         </motion.h1>
 
-        {/* Dynamic role tagline with typing effect */}
-        <motion.div
-          className="mb-8 min-h-[4rem] text-2xl font-medium md:text-4xl"
-          style={{ color: roleConfig.accentColor }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <span className="font-mono">// </span>
-          {displayText}
-          {showCursor && <span className="animate-pulse">|</span>}
-        </motion.div>
-
-        {/* Description */}
+        {/* Description - Bold and minimal */}
         <motion.p
-          className="mx-auto mb-12 max-w-2xl text-lg text-nothing-text-secondary md:text-xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mx-auto mb-16 max-w-3xl text-xl font-light leading-relaxed text-white/60 md:text-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Transforming data into intelligent solutions. Specialized in building
-          scalable ML systems, robust data pipelines, and innovative software
-          applications.
+          {roleConfig.description}
         </motion.p>
 
-        {/* Metrics */}
+        {/* Key metric - Nothing style */}
         <motion.div
-          className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3"
-          initial={{ opacity: 0, y: 20 }}
+          className="mb-16"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
         >
-          {metrics.map((metric, index) => (
-            <motion.div
-              key={metric.label}
-              className="glass rounded-2xl border border-white/10 p-6"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              whileHover={{ scale: 1.05, borderColor: roleConfig.accentColor }}
-            >
-              <CountUpAnimation
-                end={metric.value}
-                suffix={metric.suffix}
-                accentColor={roleConfig.accentColor}
-              />
-              <div className="mt-2 text-sm text-nothing-text-secondary">
-                {metric.label}
-              </div>
-            </motion.div>
-          ))}
+          <div className="text-7xl font-black md:text-9xl" style={{ color: roleConfig.accentColor }}>
+            {roleConfig.primaryMetric.match(/\d+/)?.[0] || '93'}
+            <span className="text-white">{roleConfig.primaryMetric.match(/[^\d]+$/)?.[0] || '%'}</span>
+          </div>
+          <div className="mt-4 text-sm font-medium uppercase tracking-widest text-white/40">
+            Primary Achievement
+          </div>
         </motion.div>
 
-        {/* CTAs */}
+        {/* CTAs - Nothing style buttons */}
         <motion.div
-          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
-          initial={{ opacity: 0, y: 20 }}
+          className="flex flex-col items-center justify-center gap-6 sm:flex-row"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
         >
-          <a
+          <motion.a
             href="#contact"
-            className="cursor-hover group relative overflow-hidden rounded-full px-8 py-4 text-lg font-medium text-white transition-all hover:shadow-lg"
+            className="cursor-hover group relative overflow-hidden px-12 py-5 text-base font-bold uppercase tracking-wider text-black"
             style={{ backgroundColor: roleConfig.accentColor }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <span className="relative z-10">Get In Touch</span>
-            <motion.div
-              className="absolute inset-0 bg-white"
-              initial={{ scale: 0, opacity: 0 }}
-              whileHover={{ scale: 1, opacity: 0.2 }}
-              transition={{ duration: 0.3 }}
-            />
-          </a>
+            <span className="relative z-10">Contact Me</span>
+          </motion.a>
 
-          <a
+          <motion.a
             href="#projects"
-            className="cursor-hover rounded-full border-2 px-8 py-4 text-lg font-medium text-white transition-all hover:bg-white/10"
+            className="cursor-hover group overflow-hidden border-2 px-12 py-5 text-base font-bold uppercase tracking-wider text-white transition-all"
             style={{ borderColor: roleConfig.accentColor }}
+            whileHover={{ scale: 1.05, backgroundColor: `${roleConfig.accentColor}20` }}
+            whileTap={{ scale: 0.95 }}
           >
-            View Projects
-          </a>
+            View Work
+          </motion.a>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.a
-          href="#about"
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+        {/* Scroll indicator - minimalist */}
+        <motion.div
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, 8, 0] }}
+          transition={{
+            opacity: { delay: 1, duration: 0.5 },
+            y: { duration: 2, repeat: Infinity, ease: 'easeInOut' }
+          }}
         >
-          <ChevronDown className="h-8 w-8 text-nothing-text-secondary" />
-        </motion.a>
+          <div className="flex flex-col items-center gap-2">
+            <div className="h-12 w-[2px]" style={{ backgroundColor: roleConfig.accentColor }} />
+            <ChevronDown className="h-6 w-6" style={{ color: roleConfig.accentColor }} />
+          </div>
+        </motion.div>
       </div>
     </section>
-  )
-}
-
-function CountUpAnimation({
-  end,
-  suffix = '',
-  accentColor,
-}: {
-  end: number
-  suffix?: string
-  accentColor: string
-}) {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    let startTime: number
-    const duration = 2000
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime
-      const progress = Math.min((currentTime - startTime) / duration, 1)
-
-      setCount(Math.floor(progress * end))
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      }
-    }
-
-    requestAnimationFrame(animate)
-  }, [end])
-
-  return (
-    <div className="text-4xl font-bold" style={{ color: accentColor }}>
-      {count}
-      {suffix}
-    </div>
   )
 }
