@@ -56,12 +56,12 @@ export default function ContactForm() {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className="glass w-full max-w-2xl rounded-2xl border border-white/10 p-8"
+      className="glass w-full max-w-2xl rounded-2xl border border-white/10 p-6 sm:p-8"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <h3 className="mb-6 text-2xl font-bold text-white">Send a Message</h3>
+      <h3 className="mb-6 text-xl font-bold uppercase tracking-wider text-white sm:text-2xl">Send a Message</h3>
 
       <div className="space-y-4">
         {/* Name */}
@@ -76,7 +76,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+            className="w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/40 transition-all focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 sm:px-4 sm:py-3 sm:text-base"
             placeholder="Your name"
             style={{
               borderColor: status === 'error' ? '#FF0000' : undefined,
@@ -96,7 +96,7 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+            className="w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/40 transition-all focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 sm:px-4 sm:py-3 sm:text-base"
             placeholder="your.email@example.com"
           />
         </div>
@@ -113,7 +113,7 @@ export default function ContactForm() {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+            className="w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/40 transition-all focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 sm:px-4 sm:py-3 sm:text-base"
             placeholder="What's this about?"
           />
         </div>
@@ -130,7 +130,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+            className="w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/40 transition-all focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 sm:px-4 sm:py-3 sm:text-base"
             placeholder="Your message..."
           />
         </div>
@@ -139,7 +139,7 @@ export default function ContactForm() {
         <motion.button
           type="submit"
           disabled={status === 'sending'}
-          className="flex w-full items-center justify-center gap-2 rounded-lg px-6 py-4 font-bold text-white transition-all hover:shadow-lg disabled:opacity-50"
+          className="flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-all hover:shadow-lg disabled:opacity-50 sm:py-4 sm:text-base"
           style={{ backgroundColor: roleConfig.accentColor }}
           whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -147,7 +147,7 @@ export default function ContactForm() {
           {status === 'sending' ? (
             <>
               <motion.div
-                className="h-5 w-5 rounded-full border-2 border-white border-t-transparent"
+                className="h-4 w-4 rounded-full border-2 border-white border-t-transparent sm:h-5 sm:w-5"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
               />
@@ -155,17 +155,17 @@ export default function ContactForm() {
             </>
           ) : status === 'success' ? (
             <>
-              <CheckCircle className="h-5 w-5" />
+              <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5" />
               <span>Sent!</span>
             </>
           ) : status === 'error' ? (
             <>
-              <AlertCircle className="h-5 w-5" />
+              <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5" />
               <span>Try Again</span>
             </>
           ) : (
             <>
-              <Send className="h-5 w-5" />
+              <Send className="h-4 w-4 sm:h-5 sm:w-5" />
               <span>Send Message</span>
             </>
           )}

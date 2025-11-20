@@ -53,7 +53,7 @@ export default function Hero() {
 
         {/* Main heading - Nothing style: BOLD and HIGH CONTRAST */}
         <motion.h1
-          className="mb-8 text-6xl font-black uppercase leading-[0.9] tracking-tight text-white md:text-8xl lg:text-9xl"
+          className="mb-6 text-5xl font-black uppercase leading-[0.85] tracking-tighter text-white sm:text-6xl md:text-8xl lg:text-9xl"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -87,7 +87,7 @@ export default function Hero() {
 
         {/* Description - Bold and minimal */}
         <motion.p
-          className="mx-auto mb-16 max-w-3xl text-xl font-light leading-relaxed text-white/60 md:text-2xl"
+          className="mx-auto mb-12 max-w-3xl text-base font-light leading-relaxed text-white/60 sm:text-lg md:text-xl lg:text-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -97,30 +97,30 @@ export default function Hero() {
 
         {/* Key metric - Nothing style */}
         <motion.div
-          className="mb-16"
+          className="mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <div className="text-7xl font-black md:text-9xl" style={{ color: roleConfig.accentColor }}>
+          <div className="text-6xl font-black sm:text-7xl md:text-9xl" style={{ color: roleConfig.accentColor }}>
             {roleConfig.primaryMetric.match(/\d+/)?.[0] || '93'}
             <span className="text-white">{roleConfig.primaryMetric.match(/[^\d]+$/)?.[0] || '%'}</span>
           </div>
-          <div className="mt-4 text-sm font-medium uppercase tracking-widest text-white/40">
+          <div className="mt-3 text-xs font-medium uppercase tracking-widest text-white/40 sm:mt-4 sm:text-sm">
             Primary Achievement
           </div>
         </motion.div>
 
         {/* CTAs - Nothing style buttons */}
         <motion.div
-          className="flex flex-col items-center justify-center gap-6 sm:flex-row"
+          className="flex w-full flex-col items-stretch justify-center gap-4 sm:w-auto sm:flex-row sm:gap-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
         >
           <motion.a
             href="#contact"
-            className="cursor-hover group relative overflow-hidden px-12 py-5 text-base font-bold uppercase tracking-wider text-black"
+            className="cursor-hover group relative overflow-hidden px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-black sm:px-12 sm:py-5 sm:text-base"
             style={{ backgroundColor: roleConfig.accentColor }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -130,7 +130,7 @@ export default function Hero() {
 
           <motion.a
             href="#projects"
-            className="cursor-hover group overflow-hidden border-2 px-12 py-5 text-base font-bold uppercase tracking-wider text-white transition-all"
+            className="cursor-hover group overflow-hidden border-2 px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-white transition-all sm:px-12 sm:py-5 sm:text-base"
             style={{ borderColor: roleConfig.accentColor }}
             whileHover={{ scale: 1.05, backgroundColor: `${roleConfig.accentColor}20` }}
             whileTap={{ scale: 0.95 }}
@@ -141,7 +141,7 @@ export default function Hero() {
 
         {/* Scroll indicator - minimalist */}
         <motion.div
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 sm:block sm:bottom-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 8, 0] }}
           transition={{
