@@ -75,16 +75,31 @@ export default function About() {
               data into actionable insights and elegant software solutions.
             </p>
 
-            {/* Education card - Nothing style */}
+            {/* Education card - Nothing style with 3D depth */}
             <motion.div
-              className="nothing-card mt-6"
-              whileHover={{ borderColor: roleConfig.accentColor }}
-              transition={{ duration: 0.3 }}
+              className="perspective-deep nothing-card mt-6"
+              whileHover={{
+                borderColor: roleConfig.accentColor,
+                rotateX: 3,
+                rotateY: 3,
+                translateZ: 20,
+                boxShadow: `0 15px 35px rgba(0, 0, 0, 0.3), 0 0 30px ${roleConfig.accentColor}20`
+              }}
+              transition={{ duration: 0.4, type: 'spring' }}
+              style={{ transformStyle: 'preserve-3d' }}
             >
               <div className="mb-4 flex items-center gap-3 border-b border-white/10 pb-4">
-                <div className="p-2" style={{ backgroundColor: `${roleConfig.accentColor}15` }}>
+                <motion.div
+                  className="p-2"
+                  style={{
+                    backgroundColor: `${roleConfig.accentColor}15`,
+                    transformStyle: 'preserve-3d'
+                  }}
+                  whileHover={{ rotateY: 360, translateZ: 10 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <GraduationCap className="h-5 w-5" style={{ color: roleConfig.accentColor }} />
-                </div>
+                </motion.div>
                 <div>
                   <h3 className="font-mono text-sm font-bold uppercase tracking-wider text-white">
                     {education.degree}
@@ -116,24 +131,53 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* CLI Skills Terminal - Nothing style */}
+          {/* CLI Skills Terminal - Nothing style with 3D tilt */}
           <motion.div
-            className="nothing-card font-mono"
-            initial={{ opacity: 0, x: 20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            className="perspective-deep nothing-card font-mono"
+            initial={{ opacity: 0, x: 20, rotateY: 30 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4, type: 'spring' }}
+            whileHover={{
+              rotateX: -3,
+              rotateY: -3,
+              translateZ: 25,
+              boxShadow: `0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px ${roleConfig.accentColor}20`
+            }}
+            style={{ transformStyle: 'preserve-3d' }}
           >
             {/* Terminal header */}
             <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-4">
               <div className="flex items-center gap-2">
-                <div className="h-2 w-2 bg-white" />
+                <motion.div
+                  className="h-2 w-2 bg-white"
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [1, 0.6, 1]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut'
+                  }}
+                />
                 <span className="text-xs uppercase tracking-wider text-white/60">
                   SKILLS.SH
                 </span>
               </div>
-              <span className="text-xs text-white/30" style={{ color: roleConfig.accentColor }}>
+              <motion.span
+                className="text-xs text-white/30"
+                style={{ color: roleConfig.accentColor }}
+                animate={{
+                  opacity: [0.3, 1, 0.3]
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut'
+                }}
+              >
                 [ACTIVE]
-              </span>
+              </motion.span>
             </div>
 
             {/* Commands */}

@@ -165,10 +165,93 @@
 
   .nothing-card {
     @apply bg-black border border-white/10 p-6 transition-all duration-300;
+    transform-style: preserve-3d;
   }
 
   .nothing-card:hover {
     @apply border-white/30;
+  }
+
+  /* 3D Effects System */
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .perspective-deep {
+    perspective: 2000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .card-3d:hover {
+    transform: translateZ(20px) rotateX(2deg) rotateY(2deg);
+  }
+
+  .float-3d {
+    animation: float3d 6s ease-in-out infinite;
+  }
+
+  @keyframes float3d {
+    0%, 100% {
+      transform: translateY(0px) translateZ(0px);
+    }
+    50% {
+      transform: translateY(-20px) translateZ(10px);
+    }
+  }
+
+  .tilt-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+
+  .tilt-3d:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(10px);
+  }
+
+  .layer-1 {
+    transform: translateZ(10px);
+  }
+
+  .layer-2 {
+    transform: translateZ(20px);
+  }
+
+  .layer-3 {
+    transform: translateZ(30px);
+  }
+
+  .depth-shadow {
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.24),
+      0 10px 20px rgba(0, 0, 0, 0.19);
+  }
+
+  .depth-shadow-strong {
+    box-shadow:
+      0 14px 28px rgba(0, 0, 0, 0.25),
+      0 10px 10px rgba(0, 0, 0, 0.22),
+      0 0 40px rgba(255, 0, 0, 0.1);
+  }
+
+  .parallax-slow {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .parallax-medium {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .parallax-fast {
+    transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);
   }
 }
 

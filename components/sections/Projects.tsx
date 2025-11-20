@@ -93,33 +93,55 @@ function ProjectCard({
 }) {
   return (
     <motion.div
-      className="group relative cursor-hover"
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="perspective group relative cursor-hover"
+      initial={{ opacity: 0, y: 50, rotateX: -30 }}
+      animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1, type: 'spring' }}
       onClick={onSelect}
+      style={{ transformStyle: 'preserve-3d' }}
     >
-      {/* Featured badge - Nothing style */}
+      {/* Featured badge - Nothing style with 3D float */}
       {isFeatured && (
-        <div
+        <motion.div
           className="absolute -left-0 -top-0 z-10 border px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-wider"
           style={{
             backgroundColor: accentColor,
             color: 'black',
             borderColor: accentColor,
+            transformStyle: 'preserve-3d'
+          }}
+          animate={{
+            rotateZ: [0, 2, 0, -2, 0],
+            translateZ: [0, 10, 0]
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: 'easeInOut'
           }}
         >
           FEATURED
-        </div>
+        </motion.div>
       )}
 
       <motion.div
-        className="nothing-card relative h-full overflow-hidden transition-all"
-        whileHover={{ y: -4, borderColor: accentColor }}
-        transition={{ duration: 0.3 }}
+        className="depth-shadow nothing-card relative h-full overflow-hidden transition-all"
+        whileHover={{
+          y: -8,
+          borderColor: accentColor,
+          rotateX: 5,
+          rotateY: 5,
+          translateZ: 30,
+          boxShadow: `0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px ${accentColor}30`
+        }}
+        transition={{ duration: 0.4, type: 'spring', stiffness: 300 }}
+        style={{ transformStyle: 'preserve-3d' }}
       >
-        {/* Corner accent */}
-        <div className="absolute right-0 top-0 h-12 w-12 border-r border-t border-white/20" />
+        {/* Corner accent with 3D depth */}
+        <motion.div
+          className="absolute right-0 top-0 h-12 w-12 border-r border-t border-white/20"
+          style={{ transform: 'translateZ(5px)' }}
+        />
 
         <div className="relative z-10">
           {/* Title */}
