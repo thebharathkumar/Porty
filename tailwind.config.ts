@@ -10,6 +10,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        tron: {
+          blue: '#00D9FF',      // Electric cyan blue
+          purple: '#B026FF',    // Neon purple
+          orange: '#FF6600',    // TRON orange accent
+          cyan: '#00FFFF',      // Bright cyan
+          dark: '#0a0a0a',      // Almost black
+          grid: '#003366',      // Dark blue for grids
+        },
         purple: {
           deep: '#50207A',      // deep midnight purple/indigo
           lavender: '#D6B9FC',  // soft lavender
@@ -17,25 +25,25 @@ const config: Config = {
           light: '#E7E4F6',     // very pale lavender/grey
         },
         nothing: {
-          red: '#50207A',       // Deep purple accent
+          red: '#00D9FF',       // TRON blue accent
           dark: '#000000',      // Black background
           light: '#FFFFFF',     // White text
-          surface: '#0A0A0A',   // Very dark surface
-          'surface-light': '#1A1A1A',
-          'text-secondary': '#838CE5',
+          surface: '#0a0a0a',   // Very dark surface
+          'surface-light': '#0f0f0f',
+          'text-secondary': '#00D9FF',
         },
         role: {
-          software: '#838CE5',  // periwinkle
-          aiml: '#D6B9FC',      // soft lavender
-          backend: '#838CE5',   // periwinkle
-          data: '#D6B9FC',      // soft lavender
-          analyst: '#838CE5',   // periwinkle
-          fullstack: '#D6B9FC', // soft lavender
+          software: '#00D9FF',  // Electric blue
+          aiml: '#B026FF',      // Neon purple
+          backend: '#00FFFF',   // Cyan
+          data: '#00D9FF',      // Electric blue
+          analyst: '#B026FF',   // Neon purple
+          fullstack: '#00FFFF', // Cyan
         },
         accent: {
-          success: '#838CE5',
-          warning: '#D6B9FC',
-          info: '#838CE5',
+          success: '#00D9FF',
+          warning: '#FF6600',
+          info: '#00FFFF',
         },
       },
       fontFamily: {
@@ -61,6 +69,7 @@ const config: Config = {
         'slide-down': 'slideDown 0.6s ease-out',
         'scale-in': 'scaleIn 0.4s ease-out',
         'glow': 'glow 2s ease-in-out infinite',
+        'tron-glow': 'tron-glow 2s ease-in-out infinite',
         'float': 'float 3s ease-in-out infinite',
       },
       keyframes: {
@@ -81,8 +90,12 @@ const config: Config = {
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
         glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(80, 32, 122, 0.5)' },
-          '50%': { boxShadow: '0 0 40px rgba(80, 32, 122, 0.8)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(0, 217, 255, 0.8), 0 0 40px rgba(0, 217, 255, 0.4)' },
+          '50%': { boxShadow: '0 0 30px rgba(0, 217, 255, 1), 0 0 60px rgba(0, 217, 255, 0.6)' },
+        },
+        'tron-glow': {
+          '0%, 100%': { boxShadow: '0 0 5px #00D9FF, 0 0 10px #00D9FF, 0 0 20px #00D9FF, 0 0 40px #00D9FF' },
+          '50%': { boxShadow: '0 0 10px #00D9FF, 0 0 20px #00D9FF, 0 0 40px #00D9FF, 0 0 80px #00D9FF' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },

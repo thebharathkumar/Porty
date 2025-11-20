@@ -74,7 +74,8 @@ export default function Navigation() {
             <div className="relative">
               <button
                 onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
-                className="flex items-center gap-2 border border-purple-lavender px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-purple-lavender hover:text-black"
+                className="flex items-center gap-2 border border-tron-blue px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-tron-blue hover:text-black"
+                style={{ boxShadow: '0 0 10px rgba(0, 217, 255, 0.4)' }}
               >
                 <span>{isViewingAll ? 'ALL_ROLES' : roleConfig.title.toUpperCase().replace(/ /g, '_')}</span>
                 <ChevronDown className={`h-3 w-3 transition-transform ${isRoleDropdownOpen ? 'rotate-180' : ''}`} />
@@ -84,7 +85,8 @@ export default function Navigation() {
               <AnimatePresence>
                 {isRoleDropdownOpen && (
                   <motion.div
-                    className="absolute right-0 top-full mt-2 w-56 border border-purple-lavender/20 bg-black/95 backdrop-blur-md"
+                    className="absolute right-0 top-full mt-2 w-56 border border-tron-blue/40 bg-black/95 backdrop-blur-md"
+                    style={{ boxShadow: '0 0 20px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 217, 255, 0.05)' }}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
@@ -95,9 +97,10 @@ export default function Navigation() {
                         resetRole()
                         setIsRoleDropdownOpen(false)
                       }}
-                      className={`w-full border-b border-white/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors ${
-                        isViewingAll ? 'bg-purple-lavender/20 text-white' : 'text-white/60 hover:bg-white/5 hover:text-white'
+                      className={`w-full border-b border-tron-blue/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors ${
+                        isViewingAll ? 'bg-tron-blue/20 text-white' : 'text-white/60 hover:bg-tron-blue/5 hover:text-white'
                       }`}
+                      style={isViewingAll ? { boxShadow: '0 0 10px rgba(0, 217, 255, 0.3)' } : {}}
                     >
                       All Roles
                     </button>
@@ -110,14 +113,15 @@ export default function Navigation() {
                             selectRole(roleId)
                             setIsRoleDropdownOpen(false)
                           }}
-                          className={`w-full border-b border-white/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors last:border-b-0 ${
+                          className={`w-full border-b border-tron-blue/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors last:border-b-0 ${
                             !isViewingAll && roleConfig.id === roleId
-                              ? 'bg-purple-lavender/20 text-white'
-                              : 'text-white/60 hover:bg-white/5 hover:text-white'
+                              ? 'bg-tron-blue/20 text-white'
+                              : 'text-white/60 hover:bg-tron-blue/5 hover:text-white'
                           }`}
                           style={{
                             borderLeftWidth: !isViewingAll && roleConfig.id === roleId ? '3px' : '0',
                             borderLeftColor: role.accentColor,
+                            boxShadow: !isViewingAll && roleConfig.id === roleId ? `0 0 10px ${role.accentColor}60` : 'none',
                           }}
                         >
                           {role.title}
@@ -187,8 +191,9 @@ export default function Navigation() {
                     setIsMobileMenuOpen(false)
                   }}
                   className={`w-full border px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider transition-all ${
-                    isViewingAll ? 'bg-purple-lavender text-black' : 'border-white/40 text-white hover:bg-white/10'
+                    isViewingAll ? 'bg-tron-blue text-black border-tron-blue' : 'border-tron-blue/40 text-white hover:bg-tron-blue/10'
                   }`}
+                  style={isViewingAll ? { boxShadow: '0 0 20px #00D9FF' } : { boxShadow: '0 0 5px rgba(0, 217, 255, 0.3)' }}
                 >
                   All Roles
                 </button>
@@ -204,11 +209,12 @@ export default function Navigation() {
                       className={`w-full border px-6 py-3 font-mono text-xs uppercase tracking-wider transition-all ${
                         !isViewingAll && roleConfig.id === roleId
                           ? 'text-black'
-                          : 'border-white/40 text-white hover:bg-white/10'
+                          : 'border-tron-blue/40 text-white hover:bg-tron-blue/10'
                       }`}
                       style={{
                         backgroundColor: !isViewingAll && roleConfig.id === roleId ? role.accentColor : 'transparent',
                         borderColor: !isViewingAll && roleConfig.id === roleId ? role.accentColor : undefined,
+                        boxShadow: !isViewingAll && roleConfig.id === roleId ? `0 0 20px ${role.accentColor}` : '0 0 5px rgba(0, 217, 255, 0.2)',
                       }}
                     >
                       {role.title}

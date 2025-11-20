@@ -33,20 +33,23 @@
   }
 
   .glass {
-    @apply backdrop-blur-md bg-white/5 border border-white/10;
+    @apply backdrop-blur-md bg-white/5 border border-tron-blue/30;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
   }
 
   .glass-heavy {
-    @apply backdrop-blur-xl bg-white/10 border border-white/20;
+    @apply backdrop-blur-xl bg-black/60 border border-tron-blue/50;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
   }
 
-  /* Purple-inspired glass effect on dark */
+  /* TRON glass effect */
   .nothing-glass {
-    @apply backdrop-blur-sm bg-black/80 border border-purple-lavender/20;
+    @apply backdrop-blur-sm bg-black/90 border border-tron-blue/40;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.3), inset 0 0 10px rgba(0, 217, 255, 0.1);
   }
 
   .glow-red {
-    box-shadow: 0 0 20px rgba(131, 140, 229, 0.5);
+    box-shadow: 0 0 10px #00D9FF, 0 0 20px #00D9FF, 0 0 30px #00D9FF;
   }
 
   .glow-role {
@@ -57,18 +60,18 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r;
   }
 
-  /* Purple theme on dark background */
+  /* TRON theme effects */
   .nothing-border {
-    border: 2px solid #50207A;
-    box-shadow: 0 0 20px rgba(80, 32, 122, 0.5);
+    border: 2px solid #00D9FF;
+    box-shadow: 0 0 10px #00D9FF, 0 0 20px #00D9FF, 0 0 30px rgba(0, 217, 255, 0.5);
   }
 
   .nothing-glow {
-    text-shadow: 0 0 30px rgba(131, 140, 229, 0.5);
+    text-shadow: 0 0 10px #00D9FF, 0 0 20px #00D9FF, 0 0 30px rgba(0, 217, 255, 0.8);
   }
 
   .dot-matrix {
-    background-image: radial-gradient(rgba(131, 140, 229, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(0, 217, 255, 0.3) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 
@@ -76,9 +79,15 @@
     background: linear-gradient(
       to bottom,
       transparent 50%,
-      rgba(80, 32, 122, 0.05) 50%
+      rgba(0, 217, 255, 0.05) 50%
     );
-    background-size: 100% 4px;
+    background-size: 100% 2px;
+    animation: scanline-move 8s linear infinite;
+  }
+
+  @keyframes scanline-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
   }
 
   .glitch {
@@ -113,63 +122,73 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-purple-periwinkle rounded-full;
+    @apply bg-tron-blue rounded-full;
+    box-shadow: 0 0 5px #00D9FF;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-purple-lavender;
+    @apply bg-tron-cyan;
+    box-shadow: 0 0 10px #00FFFF;
   }
 
-  /* Purple accents on dark theme */
+  /* TRON grid patterns with glow */
   .nothing-grid {
     background-image:
-      linear-gradient(rgba(80, 32, 122, 0.15) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(80, 32, 122, 0.15) 1px, transparent 1px);
+      linear-gradient(rgba(0, 217, 255, 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 217, 255, 0.3) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
   .nothing-grid-strong {
     background-image:
-      linear-gradient(rgba(80, 32, 122, 0.25) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(80, 32, 122, 0.25) 1px, transparent 1px);
+      linear-gradient(rgba(0, 217, 255, 0.5) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(0, 217, 255, 0.5) 2px, transparent 2px);
     background-size: 80px 80px;
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
   }
 
   .nothing-red-grid {
     background-image:
-      linear-gradient(rgba(131, 140, 229, 0.15) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(131, 140, 229, 0.15) 1px, transparent 1px);
+      linear-gradient(rgba(0, 255, 255, 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.4) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
   .nothing-btn {
-    @apply px-8 py-3 bg-transparent border-2 border-white text-white font-bold uppercase tracking-widest text-sm transition-all duration-300;
+    @apply px-8 py-3 bg-transparent border-2 border-tron-blue text-white font-bold uppercase tracking-widest text-sm transition-all duration-300;
+    box-shadow: 0 0 5px rgba(0, 217, 255, 0.5), inset 0 0 5px rgba(0, 217, 255, 0.1);
   }
 
   .nothing-btn:hover {
-    @apply bg-white text-black;
+    @apply bg-tron-blue text-black;
+    box-shadow: 0 0 20px #00D9FF, 0 0 40px rgba(0, 217, 255, 0.6);
   }
 
   .nothing-btn-red {
-    @apply px-8 py-3 bg-purple-deep border-2 border-purple-deep text-white font-bold uppercase tracking-widest text-sm transition-all duration-300;
+    @apply px-8 py-3 bg-tron-blue/10 border-2 border-tron-blue text-white font-bold uppercase tracking-widest text-sm transition-all duration-300;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.6);
   }
 
   .nothing-btn-red:hover {
-    @apply bg-transparent text-purple-lavender border-purple-lavender;
+    @apply bg-tron-blue text-black;
+    box-shadow: 0 0 20px #00D9FF, 0 0 40px #00D9FF;
   }
 
   .nothing-section-border {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(0, 217, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 217, 255, 0.3);
+    box-shadow: 0 1px 10px rgba(0, 217, 255, 0.2), 0 -1px 10px rgba(0, 217, 255, 0.2);
   }
 
   .nothing-card {
-    @apply bg-black border border-white/10 p-6 transition-all duration-300;
+    @apply bg-black border border-tron-blue/20 p-6 transition-all duration-300;
     transform-style: preserve-3d;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.1);
   }
 
   .nothing-card:hover {
-    @apply border-purple-lavender/50;
+    @apply border-tron-blue/60;
+    box-shadow: 0 0 25px rgba(0, 217, 255, 0.4), 0 0 50px rgba(0, 217, 255, 0.2);
   }
 
   /* 3D Effects System */
@@ -239,7 +258,8 @@
     box-shadow:
       0 14px 28px rgba(0, 0, 0, 0.35),
       0 10px 10px rgba(0, 0, 0, 0.25),
-      0 0 40px rgba(80, 32, 122, 0.3);
+      0 0 40px rgba(0, 217, 255, 0.4),
+      0 0 80px rgba(0, 217, 255, 0.2);
   }
 
   .parallax-slow {
@@ -265,20 +285,21 @@
   mix-blend-mode: difference;
 }
 
-/* Grid pattern background */
+/* TRON grid pattern background */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(80, 32, 122, 0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(80, 32, 122, 0.15) 1px, transparent 1px);
+    linear-gradient(rgba(0, 217, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 217, 255, 0.3) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-/* Stronger grid for sections */
+/* Stronger TRON grid for sections */
 .grid-pattern-strong {
   background-image:
-    linear-gradient(rgba(131, 140, 229, 0.2) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(131, 140, 229, 0.2) 2px, transparent 2px);
+    linear-gradient(rgba(0, 217, 255, 0.5) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0, 217, 255, 0.5) 2px, transparent 2px);
   background-size: 100px 100px;
+  box-shadow: inset 0 0 50px rgba(0, 217, 255, 0.1);
 }
 
 /* Terminal effect */
@@ -297,9 +318,10 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Focus visible for accessibility */
+/* Focus visible for accessibility - TRON style */
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-purple-lavender;
+  @apply outline-2 outline-offset-2 outline-tron-blue;
+  box-shadow: 0 0 10px #00D9FF;
 }
 
 /* Performance optimizations */
