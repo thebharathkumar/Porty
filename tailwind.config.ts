@@ -17,11 +17,11 @@ const config: Config = {
           light: '#E7E4F6',     // very pale lavender/grey
         },
         nothing: {
-          red: '#50207A',       // Updated to deep purple
-          dark: '#50207A',      // Deep purple as primary dark
-          light: '#E7E4F6',     // Light lavender as light
-          surface: '#50207A',
-          'surface-light': '#E7E4F6',
+          red: '#50207A',       // Deep purple accent
+          dark: '#000000',      // Black background
+          light: '#FFFFFF',     // White text
+          surface: '#0A0A0A',   // Very dark surface
+          'surface-light': '#1A1A1A',
           'text-secondary': '#838CE5',
         },
         role: {
