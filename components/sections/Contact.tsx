@@ -172,6 +172,7 @@ export default function Contact() {
             className="cursor-hover rounded-full p-4 text-white transition-all hover:bg-white/10"
             whileHover={{ scale: 1.2, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="LinkedIn Profile"
           >
             <Linkedin className="h-6 w-6" />
           </motion.a>
@@ -182,24 +183,10 @@ export default function Contact() {
             className="cursor-hover rounded-full p-4 text-white transition-all hover:bg-white/10"
             whileHover={{ scale: 1.2, rotate: -5 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="GitHub Profile"
           >
             <Github className="h-6 w-6" />
           </motion.a>
-        </motion.div>
-
-        {/* Footer */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <p className="text-sm text-nothing-text-secondary">
-            Designed & Built by Bharath Kumar Rajesh
-          </p>
-          <p className="mt-2 text-xs text-nothing-text-secondary/60">
-            © 2025 All rights reserved
-          </p>
         </motion.div>
       </div>
     </section>

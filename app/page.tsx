@@ -12,6 +12,8 @@ import Contact from '@/components/sections/Contact'
 import Navigation from '@/components/Navigation'
 import CustomCursor from '@/components/CustomCursor'
 import Preloader from '@/components/Preloader'
+import ScrollProgress from '@/components/ScrollProgress'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   const { selectedRole } = useRole()
@@ -44,21 +46,26 @@ export default function Home() {
       {!showContent ? (
         <RoleSelection />
       ) : (
-        <main className="relative">
+        <>
+          <ScrollProgress />
           <Navigation />
 
-          <Hero />
+          <main className="relative">
+            <Hero />
 
-          <About />
+            <About />
 
-          <Experience />
+            <Experience />
 
-          <Projects />
+            <Projects />
 
-          <Publications />
+            <Publications />
 
-          <Contact />
-        </main>
+            <Contact />
+          </main>
+
+          <Footer />
+        </>
       )}
     </>
   )

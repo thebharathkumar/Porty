@@ -14,8 +14,6 @@ export default function Experience() {
 
   if (!roleConfig || !selectedRole) return null
 
-  const relevantExperiences = getRelevantExperiences(experiences, selectedRole)
-
   return (
     <section
       id="experience"
@@ -44,7 +42,7 @@ export default function Experience() {
             style={{ backgroundColor: roleConfig.accentColor }}
           />
           <p className="mt-6 text-lg text-nothing-text-secondary">
-            Relevant experiences for {roleConfig.title}
+            Professional journey and key achievements
           </p>
         </motion.div>
 
@@ -54,13 +52,14 @@ export default function Experience() {
           <div className="absolute bottom-0 left-8 top-0 w-0.5 bg-white/10 md:left-1/2" />
 
           <div className="space-y-12">
-            {relevantExperiences.map((exp, index) => (
+            {experiences.map((exp, index) => (
               <TimelineItem
                 key={exp.id}
                 experience={exp}
                 index={index}
                 isInView={isInView}
                 accentColor={roleConfig.accentColor}
+                selectedRole={selectedRole}
               />
             ))}
           </div>
@@ -75,11 +74,13 @@ function TimelineItem({
   index,
   isInView,
   accentColor,
+  selectedRole,
 }: {
   experience: any
   index: number
   isInView: boolean
   accentColor: string
+  selectedRole: string
 }) {
   const isEven = index % 2 === 0
 
@@ -90,7 +91,7 @@ function TimelineItem({
       }`}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
     >
       {/* Timeline dot */}
       <motion.div
@@ -98,7 +99,7 @@ function TimelineItem({
         style={{ backgroundColor: accentColor }}
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : {}}
-        transition={{ duration: 0.3, delay: index * 0.2 + 0.3 }}
+        transition={{ duration: 0.3, delay: index * 0.1 + 0.3 }}
       />
 
       {/* Content card */}
@@ -143,20 +144,31 @@ function TimelineItem({
             </div>
           </div>
 
-          {/* Achievements */}
+          {/* Achievements - Show all, highlight relevant ones */}
           <ul className="mb-4 space-y-2">
-            {experience.achievements.map((achievement: any, idx: number) => (
-              <li
-                key={idx}
-                className="flex items-start gap-2 text-sm text-nothing-text-secondary"
-              >
-                <ChevronRight
-                  className="mt-0.5 h-4 w-4 flex-shrink-0"
-                  style={{ color: accentColor }}
-                />
-                <span>{achievement.text}</span>
-              </li>
-            ))}
+            {experience.achievements.map((achievement: any, idx: number) => {
+              const isRelevant = achievement.relevantFor.includes(selectedRole)
+
+              return (
+                <li
+                  key={idx}
+                  className={`flex items-start gap-2 text-sm transition-all ${
+                    isRelevant
+                      ? 'text-white'
+                      : 'text-nothing-text-secondary opacity-70'
+                  }`}
+                >
+                  <ChevronRight
+                    className="mt-0.5 h-4 w-4 flex-shrink-0"
+                    style={{
+                      color: isRelevant ? accentColor : 'currentColor',
+                      opacity: isRelevant ? 1 : 0.5
+                    }}
+                  />
+                  <span>{achievement.text}</span>
+                </li>
+              )
+            })}
           </ul>
 
           {/* Tech stack */}
