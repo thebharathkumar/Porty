@@ -25,31 +25,27 @@ export default function Projects() {
       <section
         id="projects"
         ref={ref}
-        className="relative overflow-hidden bg-black px-6 py-24"
+        className="nothing-section-border relative overflow-hidden bg-black px-6 py-20 md:py-32"
       >
-        {/* Background gradient */}
-        <div
-          className="absolute right-0 top-1/4 h-96 w-96 rounded-full opacity-10 blur-3xl"
-          style={{ backgroundColor: roleConfig.accentColor }}
-        />
+        {/* Nothing grid background */}
+        <div className="nothing-grid absolute inset-0 opacity-50" />
 
         <div className="relative z-10 mx-auto max-w-7xl">
-          {/* Section title */}
+          {/* Section title - Nothing style */}
           <motion.div
-            className="mb-16 text-center"
+            className="mb-12 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
-              Featured Projects
-            </h2>
-            <div
-              className="mx-auto h-1 w-20 rounded-full"
-              style={{ backgroundColor: roleConfig.accentColor }}
-            />
-            <p className="mt-6 text-lg text-nothing-text-secondary">
-              Projects relevant to {roleConfig.title}
+            <div className="mb-4 flex items-center gap-4">
+              <div className="h-[2px] w-8 md:w-16" style={{ backgroundColor: roleConfig.accentColor }} />
+              <h2 className="font-mono text-2xl font-bold uppercase tracking-[0.2em] text-white md:text-4xl">
+                PROJECTS
+              </h2>
+            </div>
+            <p className="font-mono text-sm uppercase tracking-widest text-white/30 md:ml-24">
+              Section.03 / {roleConfig.title}
             </p>
           </motion.div>
 
@@ -103,40 +99,36 @@ function ProjectCard({
       transition={{ duration: 0.6, delay: index * 0.1 }}
       onClick={onSelect}
     >
-      {/* Featured badge */}
+      {/* Featured badge - Nothing style */}
       {isFeatured && (
         <div
-          className="absolute -right-2 -top-2 z-10 rounded-full px-3 py-1 text-xs font-semibold"
+          className="absolute -left-0 -top-0 z-10 border px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-wider"
           style={{
             backgroundColor: accentColor,
-            color: 'white',
+            color: 'black',
+            borderColor: accentColor,
           }}
         >
-          Featured
+          FEATURED
         </div>
       )}
 
       <motion.div
-        className="glass relative h-full overflow-hidden rounded-2xl border border-white/10 p-6 transition-all hover:border-white/30"
-        whileHover={{ y: -10, scale: 1.02 }}
+        className="nothing-card relative h-full overflow-hidden transition-all"
+        whileHover={{ y: -4, borderColor: accentColor }}
         transition={{ duration: 0.3 }}
       >
-        {/* Gradient overlay on hover */}
-        <motion.div
-          className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{
-            background: `radial-gradient(circle at top right, ${accentColor}10 0%, transparent 70%)`,
-          }}
-        />
+        {/* Corner accent */}
+        <div className="absolute right-0 top-0 h-12 w-12 border-r border-t border-white/20" />
 
         <div className="relative z-10">
           {/* Title */}
-          <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-opacity-100">
+          <h3 className="mb-2 font-mono text-lg font-bold uppercase tracking-wider text-white">
             {project.title}
           </h3>
 
           {/* Description */}
-          <p className="mb-4 text-nothing-text-secondary">
+          <p className="mb-6 text-sm leading-relaxed text-nothing-text-secondary">
             {project.description}
           </p>
 
@@ -156,57 +148,57 @@ function ProjectCard({
             ))}
           </ul>
 
-          {/* Tech stack */}
-          <div className="mb-4 flex flex-wrap gap-2">
+          {/* Tech stack - Nothing style */}
+          <div className="mb-6 flex flex-wrap gap-2">
             {project.techStack.slice(0, 5).map((tech: string) => (
               <span
                 key={tech}
-                className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white"
+                className="border border-white/10 bg-white/5 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-white/80"
               >
                 {tech}
               </span>
             ))}
             {project.techStack.length > 5 && (
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-nothing-text-secondary">
+              <span className="border border-white/10 bg-white/5 px-2 py-1 font-mono text-[10px] text-nothing-text-secondary">
                 +{project.techStack.length - 5}
               </span>
             )}
           </div>
 
-          {/* Links */}
-          <div className="flex gap-4">
+          {/* Links - Nothing style */}
+          <div className="flex gap-3 border-t border-white/10 pt-4">
             {project.github && (
               <a
                 href={project.github}
                 onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-2 text-sm text-nothing-text-secondary transition-colors hover:text-white"
+                className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-nothing-text-secondary transition-colors hover:text-white"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="h-4 w-4" />
-                <span>Code</span>
+                <Github className="h-3 w-3" />
+                <span>CODE</span>
               </a>
             )}
             {project.live && (
               <a
                 href={project.live}
                 onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-2 text-sm text-nothing-text-secondary transition-colors hover:text-white"
+                className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-nothing-text-secondary transition-colors hover:text-white"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ExternalLink className="h-4 w-4" />
-                <span>Live</span>
+                <ExternalLink className="h-3 w-3" />
+                <span>LIVE</span>
               </a>
             )}
           </div>
 
           {/* View more indicator */}
           <div
-            className="mt-4 text-sm font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="mt-4 font-mono text-xs uppercase tracking-wider opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             style={{ color: accentColor }}
           >
-            Click to learn more →
+            VIEW_DETAILS →
           </div>
         </div>
       </motion.div>
@@ -242,26 +234,27 @@ function ProjectModal({
           exit={{ opacity: 0 }}
         />
 
-        {/* Modal content */}
+        {/* Modal content - Nothing style */}
         <motion.div
-          className="glass relative z-10 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/20 p-8"
+          className="nothing-glass relative z-10 max-h-[90vh] w-full max-w-4xl overflow-y-auto border border-white/20 p-8 md:p-12"
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Close button */}
+          {/* Close button - Nothing style */}
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 rounded-full p-2 text-white transition-colors hover:bg-white/10"
+            className="absolute right-4 top-4 border border-white/20 p-2 text-white transition-all hover:border-white hover:bg-white/10"
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" />
           </button>
 
           {/* Title */}
-          <h2 className="mb-4 text-3xl font-bold text-white">
+          <h2 className="mb-2 font-mono text-2xl font-bold uppercase tracking-wider text-white md:text-3xl">
             {project.title}
           </h2>
+          <div className="mb-6 h-[2px] w-16" style={{ backgroundColor: accentColor }} />
 
           {/* Long description */}
           <p className="mb-6 text-lg text-nothing-text-secondary">
@@ -269,12 +262,12 @@ function ProjectModal({
           </p>
 
           {/* All achievements */}
-          <div className="mb-6">
+          <div className="mb-8">
             <h3
-              className="mb-3 text-xl font-semibold"
+              className="mb-4 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               style={{ color: accentColor }}
             >
-              Key Achievements
+              KEY_ACHIEVEMENTS
             </h3>
             <ul className="space-y-2">
               {project.achievements.map((achievement: string, idx: number) => (
@@ -292,19 +285,19 @@ function ProjectModal({
             </ul>
           </div>
 
-          {/* Full tech stack */}
-          <div className="mb-6">
+          {/* Full tech stack - Nothing style */}
+          <div className="mb-8">
             <h3
-              className="mb-3 text-xl font-semibold"
+              className="mb-4 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               style={{ color: accentColor }}
             >
-              Technologies
+              TECHNOLOGIES
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech: string) => (
                 <span
                   key={tech}
-                  className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white"
+                  className="border border-white/20 bg-white/10 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-white"
                 >
                   {tech}
                 </span>
@@ -312,30 +305,29 @@ function ProjectModal({
             </div>
           </div>
 
-          {/* Links */}
-          <div className="flex gap-4">
+          {/* Links - Nothing style */}
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
             {project.github && (
               <a
                 href={project.github}
-                className="flex items-center gap-2 rounded-full border-2 px-6 py-3 font-medium text-white transition-all hover:bg-white/10"
-                style={{ borderColor: accentColor }}
+                className="flex items-center justify-center gap-2 border border-white px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white/10"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="h-5 w-5" />
-                <span>View Code</span>
+                <Github className="h-4 w-4" />
+                <span>VIEW_CODE</span>
               </a>
             )}
             {project.live && (
               <a
                 href={project.live}
-                className="flex items-center gap-2 rounded-full px-6 py-3 font-medium text-white transition-all hover:shadow-lg"
+                className="flex items-center justify-center gap-2 px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-black transition-all hover:opacity-90"
                 style={{ backgroundColor: accentColor }}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ExternalLink className="h-5 w-5" />
-                <span>Live Demo</span>
+                <ExternalLink className="h-4 w-4" />
+                <span>LIVE_DEMO</span>
               </a>
             )}
           </div>

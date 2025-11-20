@@ -23,29 +23,26 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative overflow-hidden bg-black px-6 py-24"
+      className="nothing-section-border relative overflow-hidden bg-black px-6 py-20 md:py-32"
     >
-      {/* Background gradient */}
-      <div
-        className="absolute right-0 top-0 h-96 w-96 rounded-full opacity-10 blur-3xl"
-        style={{ backgroundColor: roleConfig.accentColor }}
-      />
+      {/* Nothing grid background */}
+      <div className="nothing-grid absolute inset-0 opacity-50" />
 
-      <div className="relative z-10 mx-auto max-w-6xl">
-        {/* Section title */}
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Section title - Nothing style */}
         <motion.div
-          className="mb-16 text-center"
+          className="mb-12 md:mb-20"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
-            About Me
-          </h2>
-          <div
-            className="mx-auto h-1 w-20 rounded-full"
-            style={{ backgroundColor: roleConfig.accentColor }}
-          />
+          <div className="mb-4 flex items-center gap-4">
+            <div className="h-[2px] w-8 md:w-16" style={{ backgroundColor: roleConfig.accentColor }} />
+            <h2 className="font-mono text-2xl font-bold uppercase tracking-[0.2em] text-white md:text-4xl">
+              ABOUT_ME
+            </h2>
+          </div>
+          <p className="font-mono text-sm uppercase tracking-widest text-white/30 md:ml-24">Section.02</p>
         </motion.div>
 
         {/* Content */}
@@ -78,62 +75,64 @@ export default function About() {
               data into actionable insights and elegant software solutions.
             </p>
 
-            {/* Education card */}
+            {/* Education card - Nothing style */}
             <motion.div
-              className="glass rounded-2xl border border-white/10 p-6"
-              whileHover={{ scale: 1.02, borderColor: roleConfig.accentColor }}
+              className="nothing-card mt-6"
+              whileHover={{ borderColor: roleConfig.accentColor }}
               transition={{ duration: 0.3 }}
             >
-              <div className="mb-4 flex items-center gap-3">
-                <div
-                  className="rounded-full p-2"
-                  style={{ backgroundColor: `${roleConfig.accentColor}20` }}
-                >
-                  <GraduationCap
-                    className="h-6 w-6"
-                    style={{ color: roleConfig.accentColor }}
-                  />
+              <div className="mb-4 flex items-center gap-3 border-b border-white/10 pb-4">
+                <div className="p-2" style={{ backgroundColor: `${roleConfig.accentColor}15` }}>
+                  <GraduationCap className="h-5 w-5" style={{ color: roleConfig.accentColor }} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="font-mono text-sm font-bold uppercase tracking-wider text-white">
                     {education.degree}
                   </h3>
                 </div>
               </div>
 
-              <div className="space-y-2 text-nothing-text-secondary">
+              <div className="space-y-3 font-mono text-sm text-nothing-text-secondary">
                 <p className="font-semibold text-white">{education.school}</p>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  <span>{education.location}</span>
-                  <span className="mx-2">•</span>
-                  <span>{education.period}</span>
+                <div className="flex flex-col gap-2 text-xs">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-3 w-3" />
+                    <span>{education.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="uppercase text-white/60">Period:</span>
+                    <span>{education.period}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="uppercase text-white/60">Focus:</span>
+                    <span>{education.focus}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="uppercase text-white/60">GPA:</span>
+                    <span style={{ color: roleConfig.accentColor }}>{education.gpa}</span>
+                  </div>
                 </div>
-                <p className="text-sm">
-                  <span className="font-semibold">Focus:</span>{' '}
-                  {education.focus}
-                </p>
-                <p className="text-sm">
-                  <span className="font-semibold">GPA:</span> {education.gpa}
-                </p>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* CLI Skills Terminal */}
+          {/* CLI Skills Terminal - Nothing style */}
           <motion.div
-            className="glass rounded-2xl border border-white/10 p-6 font-mono"
+            className="nothing-card font-mono"
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             {/* Terminal header */}
-            <div className="mb-4 flex items-center gap-2 border-b border-white/10 pb-4">
-              <div className="h-3 w-3 rounded-full bg-red-500" />
-              <div className="h-3 w-3 rounded-full bg-yellow-500" />
-              <div className="h-3 w-3 rounded-full bg-green-500" />
-              <span className="ml-2 text-sm text-nothing-text-secondary">
-                skills.sh
+            <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-4">
+              <div className="flex items-center gap-2">
+                <div className="h-2 w-2 bg-white" />
+                <span className="text-xs uppercase tracking-wider text-white/60">
+                  SKILLS.SH
+                </span>
+              </div>
+              <span className="text-xs text-white/30" style={{ color: roleConfig.accentColor }}>
+                [ACTIVE]
               </span>
             </div>
 
@@ -179,19 +178,18 @@ export default function About() {
                         return (
                           <motion.span
                             key={item}
-                            className={`rounded-full px-3 py-1 text-xs transition-all ${
+                            className={`border px-2 py-1 text-[10px] uppercase tracking-wider transition-all ${
                               isHighlighted
-                                ? 'font-semibold text-white'
+                                ? 'font-bold text-white'
                                 : 'text-nothing-text-secondary'
                             }`}
                             style={{
                               backgroundColor: isHighlighted
-                                ? `${roleConfig.accentColor}30`
-                                : 'rgba(255, 255, 255, 0.05)',
+                                ? `${roleConfig.accentColor}20`
+                                : 'rgba(255, 255, 255, 0.03)',
                               borderColor: isHighlighted
                                 ? roleConfig.accentColor
-                                : 'transparent',
-                              borderWidth: '1px',
+                                : 'rgba(255, 255, 255, 0.1)',
                             }}
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}

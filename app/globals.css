@@ -33,11 +33,16 @@
   }
 
   .glass {
-    @apply backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20;
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
   }
 
   .glass-heavy {
-    @apply backdrop-blur-xl bg-white/20 dark:bg-black/20 border border-white/30;
+    @apply backdrop-blur-xl bg-white/10 border border-white/20;
+  }
+
+  /* Nothing-inspired glass effect */
+  .nothing-glass {
+    @apply backdrop-blur-sm bg-black/80 border border-white/20;
   }
 
   .glow-red {
@@ -114,6 +119,57 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-nothing-red;
   }
+
+  /* Nothing Tech Design System */
+  .nothing-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .nothing-grid-strong {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .nothing-red-grid {
+    background-image:
+      linear-gradient(rgba(255, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .nothing-btn {
+    @apply px-8 py-3 bg-transparent border-2 border-white text-white font-bold uppercase tracking-widest text-sm transition-all duration-300;
+  }
+
+  .nothing-btn:hover {
+    @apply bg-white text-black;
+  }
+
+  .nothing-btn-red {
+    @apply px-8 py-3 bg-nothing-red border-2 border-nothing-red text-black font-bold uppercase tracking-widest text-sm transition-all duration-300;
+  }
+
+  .nothing-btn-red:hover {
+    @apply bg-transparent text-nothing-red;
+  }
+
+  .nothing-section-border {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nothing-card {
+    @apply bg-black border border-white/10 p-6 transition-all duration-300;
+  }
+
+  .nothing-card:hover {
+    @apply border-white/30;
+  }
 }
 
 /* Custom cursor styles */
@@ -129,9 +185,17 @@
 /* Grid pattern background */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Stronger grid for sections */
+.grid-pattern-strong {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+  background-size: 100px 100px;
 }
 
 /* Terminal effect */

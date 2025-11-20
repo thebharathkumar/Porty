@@ -14,36 +14,35 @@ export default function Hero() {
       id="hero"
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-6 py-32"
     >
-      {/* Nothing-style background */}
-      <div className="dot-matrix absolute inset-0 opacity-30" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
+      {/* Nothing grid background */}
+      <div className="nothing-grid absolute inset-0" />
 
-      {/* Geometric shapes */}
+      {/* Corner accents - Nothing signature */}
+      <div className="absolute left-0 top-0 h-20 w-20 border-l-2 border-t-2 border-white/20" />
+      <div className="absolute right-0 top-0 h-20 w-20 border-r-2 border-t-2 border-white/20" />
+      <div className="absolute bottom-0 left-0 h-20 w-20 border-b-2 border-l-2 border-white/20" />
+      <div className="absolute bottom-0 right-0 h-20 w-20 border-b-2 border-r-2 border-white/20" />
+
+      {/* Red accent dot - Nothing signature */}
       <motion.div
-        className="absolute right-0 top-0 h-[500px] w-[500px] opacity-5"
-        style={{ border: `2px solid ${roleConfig.accentColor}` }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-      />
-      <motion.div
-        className="absolute bottom-0 left-0 h-[300px] w-[300px] rounded-full opacity-10"
-        style={{ border: `3px solid ${roleConfig.accentColor}` }}
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute left-8 top-8 h-2 w-2 rounded-full md:left-16 md:top-16"
+        style={{ backgroundColor: roleConfig.accentColor }}
+        animate={{ opacity: [1, 0.3, 1] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
       />
 
       <div className="relative z-10 mx-auto max-w-7xl text-center">
-        {/* Nothing-style badge */}
+        {/* Nothing-style badge - rectangular */}
         <motion.div
-          className="mb-12 inline-block"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          className="mb-8 inline-block md:mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <div
-            className="rounded-full px-6 py-2 text-xs font-bold uppercase tracking-widest"
+            className="border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.3em] md:px-6 md:py-2"
             style={{
-              border: `2px solid ${roleConfig.accentColor}`,
+              borderColor: roleConfig.accentColor,
               color: roleConfig.accentColor
             }}
           >
@@ -95,51 +94,55 @@ export default function Hero() {
           {roleConfig.description}
         </motion.p>
 
-        {/* Key metric - Nothing style */}
+        {/* Key metric - Technical display */}
         <motion.div
-          className="mb-12 sm:mb-16"
+          className="mb-12 flex items-center justify-center gap-4 sm:mb-16 md:gap-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <div className="text-6xl font-black sm:text-7xl md:text-9xl" style={{ color: roleConfig.accentColor }}>
-            {roleConfig.primaryMetric.match(/\d+/)?.[0] || '93'}
-            <span className="text-white">{roleConfig.primaryMetric.match(/[^\d]+$/)?.[0] || '%'}</span>
+          <div className="h-[1px] w-12 bg-white/20 md:w-24" />
+          <div className="flex flex-col items-center gap-1">
+            <div className="font-mono text-4xl font-bold tracking-wider sm:text-5xl md:text-7xl" style={{ color: roleConfig.accentColor }}>
+              {roleConfig.primaryMetric.match(/\d+/)?.[0] || '93'}
+              <span className="text-white/60">{roleConfig.primaryMetric.match(/[^\d]+$/)?.[0] || '%'}</span>
+            </div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/30 sm:text-xs">
+              ACHIEVEMENT_RATE
+            </div>
           </div>
-          <div className="mt-3 text-xs font-medium uppercase tracking-widest text-white/40 sm:mt-4 sm:text-sm">
-            Primary Achievement
-          </div>
+          <div className="h-[1px] w-12 bg-white/20 md:w-24" />
         </motion.div>
 
-        {/* CTAs - Nothing style buttons */}
+        {/* CTAs - Sharp rectangular buttons */}
         <motion.div
-          className="flex w-full flex-col items-stretch justify-center gap-4 sm:w-auto sm:flex-row sm:gap-6"
+          className="flex w-full flex-col items-stretch justify-center gap-3 sm:w-auto sm:flex-row sm:gap-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
         >
           <motion.a
             href="#contact"
-            className="cursor-hover group relative overflow-hidden px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-black sm:px-12 sm:py-5 sm:text-base"
+            className="group relative overflow-hidden px-10 py-3.5 text-center font-mono text-xs font-bold uppercase tracking-[0.3em] text-black transition-all sm:px-12 sm:py-4"
             style={{ backgroundColor: roleConfig.accentColor }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <span className="relative z-10">Contact Me</span>
+            <span className="relative z-10">GET_IN_TOUCH</span>
           </motion.a>
 
           <motion.a
             href="#projects"
-            className="cursor-hover group overflow-hidden border-2 px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-white transition-all sm:px-12 sm:py-5 sm:text-base"
-            style={{ borderColor: roleConfig.accentColor }}
-            whileHover={{ scale: 1.05, backgroundColor: `${roleConfig.accentColor}20` }}
-            whileTap={{ scale: 0.95 }}
+            className="group relative overflow-hidden border px-10 py-3.5 text-center font-mono text-xs font-bold uppercase tracking-[0.3em] text-white transition-all sm:px-12 sm:py-4"
+            style={{ borderColor: 'white' }}
+            whileHover={{ scale: 1.02, backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+            whileTap={{ scale: 0.98 }}
           >
-            View Work
+            <span className="relative z-10">VIEW_PROJECTS</span>
           </motion.a>
         </motion.div>
 
-        {/* Scroll indicator - minimalist */}
+        {/* Scroll indicator - technical */}
         <motion.div
           className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 sm:block sm:bottom-12"
           initial={{ opacity: 0 }}
@@ -149,9 +152,10 @@ export default function Hero() {
             y: { duration: 2, repeat: Infinity, ease: 'easeInOut' }
           }}
         >
-          <div className="flex flex-col items-center gap-2">
-            <div className="h-12 w-[2px]" style={{ backgroundColor: roleConfig.accentColor }} />
-            <ChevronDown className="h-6 w-6" style={{ color: roleConfig.accentColor }} />
+          <div className="flex flex-col items-center gap-3">
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">SCROLL</div>
+            <div className="h-10 w-[1px] bg-white/20" />
+            <div className="h-1 w-1 rounded-full bg-white" />
           </div>
         </motion.div>
       </div>
