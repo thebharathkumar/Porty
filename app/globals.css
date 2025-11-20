@@ -52,6 +52,52 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r;
   }
 
+  /* Nothing Phone inspired styles */
+  .nothing-border {
+    border: 2px solid #FF0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  }
+
+  .nothing-glow {
+    text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+  }
+
+  .dot-matrix {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .scanline {
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(255, 0, 0, 0.02) 50%
+    );
+    background-size: 100% 4px;
+  }
+
+  .glitch {
+    animation: glitch 3s infinite;
+  }
+
+  @keyframes glitch {
+    0%, 100% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(2px, -2px);
+    }
+    60% {
+      transform: translate(-2px, -2px);
+    }
+    80% {
+      transform: translate(2px, 2px);
+    }
+  }
+
   .custom-scrollbar::-webkit-scrollbar {
     width: 8px;
     height: 8px;

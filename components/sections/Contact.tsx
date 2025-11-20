@@ -7,6 +7,7 @@ import { contactInfo } from '@/constants/data'
 import { copyToClipboard } from '@/lib/utils'
 import { Mail, MapPin, FileDown, Linkedin, Github, Copy, Check } from 'lucide-react'
 import toast from 'react-hot-toast'
+import ContactForm from '@/components/ContactForm'
 
 export default function Contact() {
   const { roleConfig } = useRole()
@@ -151,19 +152,38 @@ export default function Contact() {
             <button
               className="rounded-full px-6 py-2 font-medium text-white transition-all hover:shadow-lg"
               style={{ backgroundColor: roleConfig.accentColor }}
-              onClick={() => toast('Resume download coming soon!')}
+              onClick={() => {
+                // Create a link to download resume
+                const link = document.createElement('a')
+                link.href = '/resume.pdf' // Update with actual resume path
+                link.download = 'Bharath_Kumar_Rajesh_Resume.pdf'
+                document.body.appendChild(link)
+                link.click()
+                document.body.removeChild(link)
+                toast.success('Resume download started!')
+              }}
             >
               Download CV
             </button>
           </motion.div>
         </div>
 
+        {/* Contact Form */}
+        <motion.div
+          className="mb-12 flex justify-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <ContactForm />
+        </motion.div>
+
         {/* Social links */}
         <motion.div
           className="flex gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
         >
           <motion.a
             href={contactInfo.linkedin}

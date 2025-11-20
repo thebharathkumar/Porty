@@ -14,6 +14,7 @@ import CustomCursor from '@/components/CustomCursor'
 import Preloader from '@/components/Preloader'
 import ScrollProgress from '@/components/ScrollProgress'
 import Footer from '@/components/Footer'
+import EasterEgg from '@/components/EasterEgg'
 
 export default function Home() {
   const { selectedRole } = useRole()
@@ -42,6 +43,7 @@ export default function Home() {
   return (
     <>
       <CustomCursor />
+      <EasterEgg />
 
       {!showContent ? (
         <RoleSelection />
