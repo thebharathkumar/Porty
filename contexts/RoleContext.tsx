@@ -2,13 +2,14 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 import { RoleType, RoleConfig } from '@/types'
-import { roleConfigs } from '@/constants/roles'
+import { roleConfigs, defaultRoleConfig } from '@/constants/roles'
 
 interface RoleContextType {
   selectedRole: RoleType | null
-  roleConfig: RoleConfig | null
+  roleConfig: RoleConfig
   selectRole: (role: RoleType) => void
   resetRole: () => void
+  isViewingAll: boolean
 }
 
 const RoleContext = createContext<RoleContextType | undefined>(undefined)
@@ -31,7 +32,9 @@ export function RoleProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const roleConfig = selectedRole ? roleConfigs[selectedRole] : null
+  // Always provide a config - default when no role selected
+  const roleConfig = selectedRole ? roleConfigs[selectedRole] : defaultRoleConfig
+  const isViewingAll = selectedRole === null
 
   return (
     <RoleContext.Provider
@@ -40,6 +43,7 @@ export function RoleProvider({ children }: { children: ReactNode }) {
         roleConfig,
         selectRole,
         resetRole,
+        isViewingAll,
       }}
     >
       {children}

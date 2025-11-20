@@ -1,5 +1,19 @@
 import { RoleConfig, RoleType } from '@/types'
 
+// Default configuration when viewing all roles
+export const defaultRoleConfig: RoleConfig = {
+  id: 'all' as RoleType,
+  title: 'Versatile Engineer',
+  subtitle: 'Full-spectrum technical expertise',
+  tagline: 'Software Engineer • AI/ML • Data Engineering',
+  accentColor: '#FF0000', // Nothing Tech red
+  primaryMetric: '5+ years experience',
+  featuredProjects: ['transportation-pipeline', 'churn-prediction', 'medicinal-plants'],
+  highlightedSkills: ['Python', 'React', 'TensorFlow', 'AWS', 'Docker', 'TypeScript'],
+  icon: '⚡',
+  description: 'Crafting intelligent, scalable solutions across the full tech stack',
+}
+
 export const roleConfigs: Record<RoleType, RoleConfig> = {
   'software-engineer': {
     id: 'software-engineer',

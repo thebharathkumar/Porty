@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRole } from '@/contexts/RoleContext'
 import { useTheme } from '@/contexts/ThemeContext'
-import { Sun, Moon, Menu, X } from 'lucide-react'
+import { Sun, Moon, Menu, X, ChevronDown } from 'lucide-react'
+import { roleConfigs, roleOrder } from '@/constants/roles'
+import { RoleType } from '@/types'
 
 const navItems = [
   { name: 'About', href: '#about' },
@@ -15,10 +17,11 @@ const navItems = [
 ]
 
 export default function Navigation() {
-  const { roleConfig, resetRole } = useRole()
+  const { roleConfig, selectRole, resetRole, isViewingAll } = useRole()
   const { theme, toggleTheme } = useTheme()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isRoleDropdownOpen, setIsRoleDropdownOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,13 +70,64 @@ export default function Navigation() {
               </a>
             ))}
 
-            {/* Change Role Button - Nothing style */}
-            <button
-              onClick={resetRole}
-              className="cursor-hover border border-white px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-black"
-            >
-              CHANGE_ROLE
-            </button>
+            {/* Role Filter Dropdown - Nothing style */}
+            <div className="relative">
+              <button
+                onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
+                className="flex items-center gap-2 border border-white px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-black"
+              >
+                <span>{isViewingAll ? 'ALL_ROLES' : roleConfig.title.toUpperCase().replace(/ /g, '_')}</span>
+                <ChevronDown className={`h-3 w-3 transition-transform ${isRoleDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {isRoleDropdownOpen && (
+                  <motion.div
+                    className="absolute right-0 top-full mt-2 w-56 border border-white/20 bg-black/95 backdrop-blur-md"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <button
+                      onClick={() => {
+                        resetRole()
+                        setIsRoleDropdownOpen(false)
+                      }}
+                      className={`w-full border-b border-white/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors ${
+                        isViewingAll ? 'bg-white/10 text-white' : 'text-white/60 hover:bg-white/5 hover:text-white'
+                      }`}
+                    >
+                      All Roles
+                    </button>
+                    {roleOrder.map((roleId) => {
+                      const role = roleConfigs[roleId]
+                      return (
+                        <button
+                          key={roleId}
+                          onClick={() => {
+                            selectRole(roleId)
+                            setIsRoleDropdownOpen(false)
+                          }}
+                          className={`w-full border-b border-white/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors last:border-b-0 ${
+                            !isViewingAll && roleConfig.id === roleId
+                              ? 'bg-white/10 text-white'
+                              : 'text-white/60 hover:bg-white/5 hover:text-white'
+                          }`}
+                          style={{
+                            borderLeftWidth: !isViewingAll && roleConfig.id === roleId ? '3px' : '0',
+                            borderLeftColor: role.accentColor,
+                          }}
+                        >
+                          {role.title}
+                        </button>
+                      )
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,22 +174,48 @@ export default function Navigation() {
                 </motion.a>
               ))}
 
-              <motion.button
-                onClick={() => {
-                  resetRole()
-                  setIsMobileMenuOpen(false)
-                }}
-                className="mt-8 border px-8 py-3 font-mono text-sm font-bold uppercase tracking-wider transition-all hover:bg-white hover:text-black"
-                style={{
-                  borderColor: roleConfig?.accentColor || '#FF0000',
-                  color: roleConfig?.accentColor || '#FF0000'
-                }}
+              <motion.div
+                className="mt-8 w-full max-w-xs space-y-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                CHANGE_ROLE
-              </motion.button>
+                <p className="mb-3 font-mono text-xs uppercase tracking-wider text-white/40">Filter by Role</p>
+                <button
+                  onClick={() => {
+                    resetRole()
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className={`w-full border px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider transition-all ${
+                    isViewingAll ? 'bg-white text-black' : 'border-white/40 text-white hover:bg-white/10'
+                  }`}
+                >
+                  All Roles
+                </button>
+                {roleOrder.slice(0, 3).map((roleId) => {
+                  const role = roleConfigs[roleId]
+                  return (
+                    <button
+                      key={roleId}
+                      onClick={() => {
+                        selectRole(roleId)
+                        setIsMobileMenuOpen(false)
+                      }}
+                      className={`w-full border px-6 py-3 font-mono text-xs uppercase tracking-wider transition-all ${
+                        !isViewingAll && roleConfig.id === roleId
+                          ? 'text-black'
+                          : 'border-white/40 text-white hover:bg-white/10'
+                      }`}
+                      style={{
+                        backgroundColor: !isViewingAll && roleConfig.id === roleId ? role.accentColor : 'transparent',
+                        borderColor: !isViewingAll && roleConfig.id === roleId ? role.accentColor : undefined,
+                      }}
+                    >
+                      {role.title}
+                    </button>
+                  )
+                })}
+              </motion.div>
             </div>
           </motion.div>
         )}

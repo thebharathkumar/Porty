@@ -8,15 +8,18 @@ import { getOrderedProjects } from '@/lib/utils'
 import { ExternalLink, Github, X, ChevronRight } from 'lucide-react'
 
 export default function Projects() {
-  const { roleConfig, selectedRole } = useRole()
+  const { roleConfig, selectedRole, isViewingAll } = useRole()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [selectedProject, setSelectedProject] = useState<any>(null)
 
-  if (!roleConfig || !selectedRole) return null
+  // Show all projects when viewing all roles, otherwise filter by selected role
+  const filteredProjects = isViewingAll
+    ? projects
+    : projects.filter((p) => selectedRole && p.relevantFor.includes(selectedRole))
 
   const orderedProjects = getOrderedProjects(
-    projects.filter((p) => p.relevantFor.includes(selectedRole)),
+    filteredProjects,
     roleConfig.featuredProjects
   )
 
@@ -45,7 +48,7 @@ export default function Projects() {
               </h2>
             </div>
             <p className="font-mono text-sm uppercase tracking-widest text-white/30 md:ml-24">
-              Section.03 / {roleConfig.title}
+              Section.03{isViewingAll ? ' / All Roles' : ` / ${roleConfig.title}`}
             </p>
           </motion.div>
 
@@ -60,6 +63,7 @@ export default function Projects() {
                 accentColor={roleConfig.accentColor}
                 onSelect={() => setSelectedProject(project)}
                 isFeatured={roleConfig.featuredProjects.includes(project.id)}
+                isViewingAll={isViewingAll}
               />
             ))}
           </div>
@@ -83,6 +87,7 @@ function ProjectCard({
   accentColor,
   onSelect,
   isFeatured,
+  isViewingAll,
 }: {
   project: any
   index: number
@@ -90,6 +95,7 @@ function ProjectCard({
   accentColor: string
   onSelect: () => void
   isFeatured: boolean
+  isViewingAll: boolean
 }) {
   return (
     <motion.div
@@ -148,6 +154,25 @@ function ProjectCard({
           <h3 className="mb-2 font-mono text-lg font-bold uppercase tracking-wider text-white">
             {project.title}
           </h3>
+
+          {/* Role Tags - Show when viewing all */}
+          {isViewingAll && project.relevantFor && project.relevantFor.length > 0 && (
+            <div className="mb-4 flex flex-wrap gap-1.5">
+              {project.relevantFor.slice(0, 3).map((roleId: string) => (
+                <span
+                  key={roleId}
+                  className="border border-white/20 bg-white/5 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-white/70"
+                >
+                  {roleId.replace('-', ' ')}
+                </span>
+              ))}
+              {project.relevantFor.length > 3 && (
+                <span className="border border-white/20 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-white/50">
+                  +{project.relevantFor.length - 3}
+                </span>
+              )}
+            </div>
+          )}
 
           {/* Description */}
           <p className="mb-6 text-sm leading-relaxed text-nothing-text-secondary">

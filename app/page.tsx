@@ -17,23 +17,13 @@ import Footer from '@/components/Footer'
 import EasterEgg from '@/components/EasterEgg'
 
 export default function Home() {
-  const { selectedRole } = useRole()
-  const [showContent, setShowContent] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    if (selectedRole) {
-      setShowContent(true)
-    } else {
-      setShowContent(false)
-    }
-  }, [selectedRole])
 
   useEffect(() => {
     // Simulate initial loading
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000)
+    }, 1500)
 
     return () => clearTimeout(timer)
   }, [])
@@ -46,31 +36,24 @@ export default function Home() {
     <>
       <CustomCursor />
       <EasterEgg />
+      <ScrollProgress />
+      <Navigation />
 
-      {!showContent ? (
-        <RoleSelection />
-      ) : (
-        <>
-          <ScrollProgress />
-          <Navigation />
+      <main className="relative">
+        <Hero />
 
-          <main className="relative">
-            <Hero />
+        <About />
 
-            <About />
+        <Experience />
 
-            <Experience />
+        <Projects />
 
-            <Projects />
+        <Publications />
 
-            <Publications />
+        <Contact />
+      </main>
 
-            <Contact />
-          </main>
-
-          <Footer />
-        </>
-      )}
+      <Footer />
     </>
   )
 }

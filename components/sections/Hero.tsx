@@ -1,23 +1,32 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRole } from '@/contexts/RoleContext'
 import { ChevronDown } from 'lucide-react'
+import { useRef } from 'react'
 
 export default function Hero() {
   const { roleConfig } = useRole()
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  })
 
-  if (!roleConfig) return null
+  // Parallax transformations
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0])
 
   return (
     <section
+      ref={ref}
       id="hero"
       className="perspective-deep relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-6 py-32"
     >
       {/* Nothing grid background with parallax */}
       <motion.div
         className="nothing-grid absolute inset-0"
-        style={{ translateZ: -50 }}
+        style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "30%"]) }}
       />
 
       {/* 3D Floating geometric shapes */}
@@ -85,14 +94,17 @@ export default function Hero() {
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      <div className="preserve-3d relative z-10 mx-auto max-w-7xl text-center">
+      <motion.div
+        className="preserve-3d relative z-10 mx-auto max-w-7xl text-center"
+        style={{ y, opacity }}
+      >
         {/* Nothing-style badge - rectangular with 3D float */}
         <motion.div
           className="mb-8 inline-block md:mb-12"
           initial={{ opacity: 0, y: -20, rotateX: -90 }}
           animate={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 0.6, type: 'spring' }}
-          whileHover={{ rotateX: 5, translateZ: 20 }}
+          transition={{ duration: 0.6, type: 'spring', stiffness: 120, damping: 20 }}
+          whileHover={{ rotateX: 5, translateZ: 20, scale: 1.05 }}
           style={{ transformStyle: 'preserve-3d' }}
         >
           <div
@@ -263,7 +275,7 @@ export default function Hero() {
             <div className="h-1 w-1 rounded-full bg-white" />
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }
