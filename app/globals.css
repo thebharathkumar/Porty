@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-black text-white;
+    @apply bg-purple-light text-purple-deep;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 
@@ -33,20 +33,20 @@
   }
 
   .glass {
-    @apply backdrop-blur-md bg-white/5 border border-white/10;
+    @apply backdrop-blur-md bg-purple-deep/5 border border-purple-deep/10;
   }
 
   .glass-heavy {
-    @apply backdrop-blur-xl bg-white/10 border border-white/20;
+    @apply backdrop-blur-xl bg-purple-deep/10 border border-purple-deep/20;
   }
 
-  /* Nothing-inspired glass effect */
+  /* Purple-inspired glass effect */
   .nothing-glass {
-    @apply backdrop-blur-sm bg-black/80 border border-white/20;
+    @apply backdrop-blur-sm bg-purple-deep/80 border border-purple-lavender/20;
   }
 
   .glow-red {
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(80, 32, 122, 0.5);
   }
 
   .glow-role {
@@ -57,18 +57,18 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r;
   }
 
-  /* Nothing Phone inspired styles */
+  /* Purple theme inspired styles */
   .nothing-border {
-    border: 2px solid #FF0000;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    border: 2px solid #50207A;
+    box-shadow: 0 0 20px rgba(80, 32, 122, 0.3);
   }
 
   .nothing-glow {
-    text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    text-shadow: 0 0 30px rgba(80, 32, 122, 0.5);
   }
 
   .dot-matrix {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(80, 32, 122, 0.15) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 
@@ -76,7 +76,7 @@
     background: linear-gradient(
       to bottom,
       transparent 50%,
-      rgba(255, 0, 0, 0.02) 50%
+      rgba(80, 32, 122, 0.02) 50%
     );
     background-size: 100% 4px;
   }
@@ -113,63 +113,63 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-nothing-text-secondary rounded-full;
+    @apply bg-purple-periwinkle rounded-full;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-nothing-red;
+    @apply bg-purple-deep;
   }
 
-  /* Nothing Tech Design System */
+  /* Purple Theme Design System */
   .nothing-grid {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(80, 32, 122, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(80, 32, 122, 0.08) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
   .nothing-grid-strong {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      linear-gradient(rgba(80, 32, 122, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(80, 32, 122, 0.15) 1px, transparent 1px);
     background-size: 80px 80px;
   }
 
   .nothing-red-grid {
     background-image:
-      linear-gradient(rgba(255, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 0, 0, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(80, 32, 122, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(80, 32, 122, 0.1) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
   .nothing-btn {
-    @apply px-8 py-3 bg-transparent border-2 border-white text-white font-bold uppercase tracking-widest text-sm transition-all duration-300;
+    @apply px-8 py-3 bg-transparent border-2 border-purple-deep text-purple-deep font-bold uppercase tracking-widest text-sm transition-all duration-300;
   }
 
   .nothing-btn:hover {
-    @apply bg-white text-black;
+    @apply bg-purple-deep text-purple-light;
   }
 
   .nothing-btn-red {
-    @apply px-8 py-3 bg-nothing-red border-2 border-nothing-red text-black font-bold uppercase tracking-widest text-sm transition-all duration-300;
+    @apply px-8 py-3 bg-purple-deep border-2 border-purple-deep text-purple-light font-bold uppercase tracking-widest text-sm transition-all duration-300;
   }
 
   .nothing-btn-red:hover {
-    @apply bg-transparent text-nothing-red;
+    @apply bg-transparent text-purple-deep;
   }
 
   .nothing-section-border {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(80, 32, 122, 0.15);
+    border-bottom: 1px solid rgba(80, 32, 122, 0.15);
   }
 
   .nothing-card {
-    @apply bg-black border border-white/10 p-6 transition-all duration-300;
+    @apply bg-purple-light border border-purple-deep/10 p-6 transition-all duration-300;
     transform-style: preserve-3d;
   }
 
   .nothing-card:hover {
-    @apply border-white/30;
+    @apply border-purple-deep/30;
   }
 
   /* 3D Effects System */
@@ -237,9 +237,9 @@
 
   .depth-shadow-strong {
     box-shadow:
-      0 14px 28px rgba(0, 0, 0, 0.25),
-      0 10px 10px rgba(0, 0, 0, 0.22),
-      0 0 40px rgba(255, 0, 0, 0.1);
+      0 14px 28px rgba(80, 32, 122, 0.15),
+      0 10px 10px rgba(80, 32, 122, 0.12),
+      0 0 40px rgba(80, 32, 122, 0.1);
   }
 
   .parallax-slow {
@@ -268,16 +268,16 @@
 /* Grid pattern background */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(80, 32, 122, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(80, 32, 122, 0.08) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
 /* Stronger grid for sections */
 .grid-pattern-strong {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+    linear-gradient(rgba(80, 32, 122, 0.15) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(80, 32, 122, 0.15) 2px, transparent 2px);
   background-size: 100px 100px;
 }
 
@@ -299,7 +299,7 @@
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-nothing-red;
+  @apply outline-2 outline-offset-2 outline-purple-deep;
 }
 
 /* Performance optimizations */

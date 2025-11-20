@@ -6,7 +6,7 @@ export const defaultRoleConfig: RoleConfig = {
   title: 'AI/ML Engineer',
   subtitle: 'Intelligent systems & scalable solutions',
   tagline: 'AI/ML Engineer • Software Engineer • Data Engineer',
-  accentColor: '#FF0000', // Nothing Tech red
+  accentColor: '#50207A', // Deep purple
   primaryMetric: '93% ML accuracy',
   featuredProjects: ['churn-prediction', 'medicinal-plants', 'transportation-pipeline'],
   highlightedSkills: ['TensorFlow', 'Python', 'PyTorch', 'AWS', 'React', 'Data Pipelines'],
@@ -20,7 +20,7 @@ export const roleConfigs: Record<RoleType, RoleConfig> = {
     title: 'Software Engineer',
     subtitle: 'Building scalable applications',
     tagline: 'Software Engineer & Full-Stack Developer',
-    accentColor: '#0A84FF',
+    accentColor: '#838CE5', // Periwinkle
     primaryMetric: '1,000+ users served',
     featuredProjects: ['transportation-pipeline', 'churn-prediction'],
     highlightedSkills: ['React', 'Flutter', 'Python', 'TypeScript', 'Node.js'],
@@ -32,7 +32,7 @@ export const roleConfigs: Record<RoleType, RoleConfig> = {
     title: 'AI/ML Engineer',
     subtitle: 'Intelligent systems & deep learning',
     tagline: 'AI/ML Engineer & Data Scientist',
-    accentColor: '#BF5AF2',
+    accentColor: '#D6B9FC', // Soft lavender
     primaryMetric: '93% ML accuracy achieved',
     featuredProjects: ['churn-prediction', 'medicinal-plants'],
     highlightedSkills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Deep Learning', 'MLOps'],
@@ -44,7 +44,7 @@ export const roleConfigs: Record<RoleType, RoleConfig> = {
     title: 'Backend Engineer',
     subtitle: 'Robust APIs & microservices',
     tagline: 'Backend Engineer & System Architect',
-    accentColor: '#32D74B',
+    accentColor: '#838CE5', // Periwinkle
     primaryMetric: '60% efficiency boost',
     featuredProjects: ['transportation-pipeline', 'churn-prediction'],
     highlightedSkills: ['Python', 'Java', 'REST APIs', 'Microservices', 'Docker'],
@@ -56,7 +56,7 @@ export const roleConfigs: Record<RoleType, RoleConfig> = {
     title: 'Data Engineer',
     subtitle: 'ETL pipelines & data infrastructure',
     tagline: 'Data Engineer & Pipeline Architect',
-    accentColor: '#FF9F0A',
+    accentColor: '#D6B9FC', // Soft lavender
     primaryMetric: '50K+ records processed',
     featuredProjects: ['transportation-pipeline', 'data-processing'],
     highlightedSkills: ['Apache Airflow', 'Spark', 'AWS', 'ETL', 'Data Pipelines'],
@@ -68,7 +68,7 @@ export const roleConfigs: Record<RoleType, RoleConfig> = {
     title: 'Data Analyst',
     subtitle: 'Insights & visualization',
     tagline: 'Data Analyst & Business Intelligence',
-    accentColor: '#FF375F',
+    accentColor: '#838CE5', // Periwinkle
     primaryMetric: '85% data accuracy',
     featuredProjects: ['data-processing', 'churn-prediction'],
     highlightedSkills: ['Power BI', 'Tableau', 'SQL', 'Python', 'Data Visualization'],
@@ -80,7 +80,7 @@ export const roleConfigs: Record<RoleType, RoleConfig> = {
     title: 'Full Stack Developer',
     subtitle: 'End-to-end solutions',
     tagline: 'Full Stack Engineer & Product Developer',
-    accentColor: '#5E5CE6',
+    accentColor: '#D6B9FC', // Soft lavender
     primaryMetric: 'Complete product delivery',
     featuredProjects: ['transportation-pipeline', 'churn-prediction', 'medicinal-plants'],
     highlightedSkills: ['React', 'Python', 'TypeScript', 'AWS', 'Full Stack'],

@@ -37,8 +37,8 @@ export default function Navigation() {
       <motion.nav
         className={`fixed top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? 'nothing-glass border-b border-white/10'
-            : 'bg-black/50 backdrop-blur-sm'
+            ? 'nothing-glass border-b border-purple-deep/10'
+            : 'bg-purple-deep/50 backdrop-blur-sm'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -52,8 +52,8 @@ export default function Navigation() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="h-2 w-2 rounded-full" style={{ backgroundColor: roleConfig?.accentColor || '#FF0000' }} />
-            <span className="font-mono text-lg font-bold uppercase tracking-wider text-white md:text-xl">
+            <div className="h-2 w-2 rounded-full" style={{ backgroundColor: roleConfig?.accentColor || '#50207A' }} />
+            <span className="font-mono text-lg font-bold uppercase tracking-wider text-purple-light md:text-xl">
               BK.DEV
             </span>
           </motion.button>
@@ -64,7 +64,7 @@ export default function Navigation() {
               <a
                 key={item.name}
                 href={item.href}
-                className="cursor-hover font-mono text-xs uppercase tracking-wider text-white/60 transition-colors hover:text-white"
+                className="cursor-hover font-mono text-xs uppercase tracking-wider text-purple-light/60 transition-colors hover:text-purple-light"
               >
                 {item.name}
               </a>
@@ -74,7 +74,7 @@ export default function Navigation() {
             <div className="relative">
               <button
                 onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
-                className="flex items-center gap-2 border border-white px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-black"
+                className="flex items-center gap-2 border border-purple-light px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-purple-light transition-all hover:bg-purple-light hover:text-purple-deep"
               >
                 <span>{isViewingAll ? 'ALL_ROLES' : roleConfig.title.toUpperCase().replace(/ /g, '_')}</span>
                 <ChevronDown className={`h-3 w-3 transition-transform ${isRoleDropdownOpen ? 'rotate-180' : ''}`} />
@@ -84,7 +84,7 @@ export default function Navigation() {
               <AnimatePresence>
                 {isRoleDropdownOpen && (
                   <motion.div
-                    className="absolute right-0 top-full mt-2 w-56 border border-white/20 bg-black/95 backdrop-blur-md"
+                    className="absolute right-0 top-full mt-2 w-56 border border-purple-lavender/20 bg-purple-deep/95 backdrop-blur-md"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
@@ -95,8 +95,8 @@ export default function Navigation() {
                         resetRole()
                         setIsRoleDropdownOpen(false)
                       }}
-                      className={`w-full border-b border-white/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors ${
-                        isViewingAll ? 'bg-white/10 text-white' : 'text-white/60 hover:bg-white/5 hover:text-white'
+                      className={`w-full border-b border-purple-lavender/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors ${
+                        isViewingAll ? 'bg-purple-lavender/10 text-purple-light' : 'text-purple-light/60 hover:bg-purple-lavender/5 hover:text-purple-light'
                       }`}
                     >
                       All Roles
@@ -110,10 +110,10 @@ export default function Navigation() {
                             selectRole(roleId)
                             setIsRoleDropdownOpen(false)
                           }}
-                          className={`w-full border-b border-white/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors last:border-b-0 ${
+                          className={`w-full border-b border-purple-lavender/10 px-4 py-3 text-left font-mono text-xs uppercase tracking-wider transition-colors last:border-b-0 ${
                             !isViewingAll && roleConfig.id === roleId
-                              ? 'bg-white/10 text-white'
-                              : 'text-white/60 hover:bg-white/5 hover:text-white'
+                              ? 'bg-purple-lavender/10 text-purple-light'
+                              : 'text-purple-light/60 hover:bg-purple-lavender/5 hover:text-purple-light'
                           }`}
                           style={{
                             borderLeftWidth: !isViewingAll && roleConfig.id === roleId ? '3px' : '0',
@@ -137,9 +137,9 @@ export default function Navigation() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-white" />
+              <X className="h-6 w-6 text-purple-light" />
             ) : (
-              <Menu className="h-6 w-6 text-white" />
+              <Menu className="h-6 w-6 text-purple-light" />
             )}
           </button>
         </div>
@@ -149,7 +149,7 @@ export default function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-30 bg-black md:hidden"
+            className="fixed inset-0 z-30 bg-purple-deep md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -161,14 +161,14 @@ export default function Navigation() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="cursor-hover font-mono text-2xl font-bold uppercase tracking-wider text-white transition-colors"
+                  className="cursor-hover font-mono text-2xl font-bold uppercase tracking-wider text-purple-light transition-colors"
                   style={{
-                    textShadow: `0 0 20px ${roleConfig?.accentColor || '#FF0000'}40`
+                    textShadow: `0 0 20px ${roleConfig?.accentColor || '#50207A'}40`
                   }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 10, color: roleConfig?.accentColor || '#FF0000' }}
+                  whileHover={{ x: 10, color: roleConfig?.accentColor || '#50207A' }}
                 >
                   {item.name}
                 </motion.a>
@@ -180,14 +180,14 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                <p className="mb-3 font-mono text-xs uppercase tracking-wider text-white/40">Filter by Role</p>
+                <p className="mb-3 font-mono text-xs uppercase tracking-wider text-purple-light/40">Filter by Role</p>
                 <button
                   onClick={() => {
                     resetRole()
                     setIsMobileMenuOpen(false)
                   }}
                   className={`w-full border px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider transition-all ${
-                    isViewingAll ? 'bg-white text-black' : 'border-white/40 text-white hover:bg-white/10'
+                    isViewingAll ? 'bg-purple-light text-purple-deep' : 'border-purple-light/40 text-purple-light hover:bg-purple-light/10'
                   }`}
                 >
                   All Roles
@@ -203,8 +203,8 @@ export default function Navigation() {
                       }}
                       className={`w-full border px-6 py-3 font-mono text-xs uppercase tracking-wider transition-all ${
                         !isViewingAll && roleConfig.id === roleId
-                          ? 'text-black'
-                          : 'border-white/40 text-white hover:bg-white/10'
+                          ? 'text-purple-light'
+                          : 'border-purple-light/40 text-purple-light hover:bg-purple-light/10'
                       }`}
                       style={{
                         backgroundColor: !isViewingAll && roleConfig.id === roleId ? role.accentColor : 'transparent',

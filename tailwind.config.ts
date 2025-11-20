@@ -10,26 +10,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        purple: {
+          deep: '#50207A',      // deep midnight purple/indigo
+          lavender: '#D6B9FC',  // soft lavender
+          periwinkle: '#838CE5', // cool periwinkle blue
+          light: '#E7E4F6',     // very pale lavender/grey
+        },
         nothing: {
-          red: '#FF0000',
-          dark: '#000000',
-          light: '#FFFFFF',
-          surface: '#1C1C1E',
-          'surface-light': '#F2F2F7',
-          'text-secondary': '#8E8E93',
+          red: '#50207A',       // Updated to deep purple
+          dark: '#50207A',      // Deep purple as primary dark
+          light: '#E7E4F6',     // Light lavender as light
+          surface: '#50207A',
+          'surface-light': '#E7E4F6',
+          'text-secondary': '#838CE5',
         },
         role: {
-          software: '#0A84FF',
-          aiml: '#BF5AF2',
-          backend: '#32D74B',
-          data: '#FF9F0A',
-          analyst: '#FF375F',
-          fullstack: '#5E5CE6',
+          software: '#838CE5',  // periwinkle
+          aiml: '#D6B9FC',      // soft lavender
+          backend: '#838CE5',   // periwinkle
+          data: '#D6B9FC',      // soft lavender
+          analyst: '#838CE5',   // periwinkle
+          fullstack: '#D6B9FC', // soft lavender
         },
         accent: {
-          success: '#34C759',
-          warning: '#FF9500',
-          info: '#007AFF',
+          success: '#838CE5',
+          warning: '#D6B9FC',
+          info: '#838CE5',
         },
       },
       fontFamily: {
@@ -75,8 +81,8 @@ const config: Config = {
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
         glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(255, 0, 0, 0.5)' },
-          '50%': { boxShadow: '0 0 40px rgba(255, 0, 0, 0.8)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(80, 32, 122, 0.5)' },
+          '50%': { boxShadow: '0 0 40px rgba(80, 32, 122, 0.8)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
